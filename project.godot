@@ -1,0 +1,37 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="UI Project"
+config/version="1.0"
+run/main_scene="uid://dxeww0762mtuc"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/icon="uid://bwehchj7ai5ef"
+
+[autoload]
+
+GameState="*res://Scripts/GameState.cs"
+
+[dotnet]
+
+project/assembly_name="UI Project"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Scenes/": "purple",
+"res://Scripts/": "yellow"
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
