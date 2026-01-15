@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnh2iqhhxw1hy"]
+
+[ext_resource type="Script" uid="uid://dy1pimfmm6fe" path="res://pause.gd" id="1_45vjg"]
+
+[node name="Pause" type="CanvasLayer"]
+script = ExtResource("1_45vjg")
+
+[node name="Resume" type="Button" parent="."]
+offset_left = 539.0
+offset_top = 300.0
+offset_right = 609.0
+offset_bottom = 331.0
+text = "Resume"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]

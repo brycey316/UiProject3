@@ -2,6 +2,17 @@ using Godot;
 
 public partial class GameState : Node
 {
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event.IsActionPressed("Pause"))
+		{
+			GetTree().ChangeSceneToFile("res://pause.tscn");;
+		}
+		if (@event.IsActionPressed("pause"))
+		{
+			GetTree().Paused =true;
+		}
+	}
 	public int Score { get; private set; } = 0;
 
 	public void AddScore(int points)
