@@ -124,3 +124,20 @@ offset_bottom = 23.0
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="Pause" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Resume" type="Button" parent="Pause"]
+offset_left = 223.0
+offset_top = 213.0
+offset_right = 933.0
+offset_bottom = 280.0
+text = "Resume"
+
+[node name="Label" type="Label" parent="Pause"]
+offset_left = 542.0
+offset_top = 125.0
+offset_right = 599.0
+offset_bottom = 148.0
+text = "Paused"

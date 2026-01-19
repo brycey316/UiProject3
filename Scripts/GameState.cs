@@ -6,12 +6,13 @@ public partial class GameState : Node
 	{
 		if (@event.IsActionPressed("Pause"))
 		{
-			GetTree().ChangeSceneToFile("res://pause.tscn");;
+			GetTree().Paused = true;
 		}
-		if (@event.IsActionPressed("pause"))
+		if (@event.IsActionPressed("Pause"))
 		{
-			GetTree().Paused =true;
+			GetNode<CanvasLayer>("$Pause").Visible = true;
 		}
+		
 	}
 	public int Score { get; private set; } = 0;
 
