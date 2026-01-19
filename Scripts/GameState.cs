@@ -4,15 +4,15 @@ public partial class GameState : Node
 {
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (@event.IsActionPressed("Pause"))
+		if (Input.IsActionPressed("esc"))
 		{
-			GetTree().Paused = true;
-		}
-		if (@event.IsActionPressed("Pause"))
-		{
-			GetNode<CanvasLayer>("$Pause").Visible = true;
+			TogglePause();
 		}
 		
+	}
+	public void TogglePause()
+	{
+		GetTree().Paused = !GetTree().Paused;
 	}
 	public int Score { get; private set; } = 0;
 
