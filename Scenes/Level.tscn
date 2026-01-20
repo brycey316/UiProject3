@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://giltv7yrltbt"]
+[gd_scene load_steps=14 format=4 uid="uid://giltv7yrltbt"]
 
 [ext_resource type="PackedScene" uid="uid://bff8vrk62tyue" path="res://Scenes/TileMap.tscn" id="1_i1qvb"]
-[ext_resource type="Script" uid="uid://dvl1ra1mteoa2" path="res://ScoreManager.cs" id="2_5rrr5"]
+[ext_resource type="Script" uid="uid://dvl1ra1mteoa2" path="res://Scripts/ScoreManager.cs" id="2_5rrr5"]
 [ext_resource type="PackedScene" uid="uid://bfoummb5wftve" path="res://Scenes/Player.tscn" id="2_7i348"]
 [ext_resource type="Script" uid="uid://bw01yvsa6o1gl" path="res://Scripts/PauseManager.cs" id="2_xylue"]
 [ext_resource type="PackedScene" uid="uid://v074xqwg3vcg" path="res://Scenes/Ogre.tscn" id="3_4iqyc"]
@@ -19,6 +19,42 @@ public partial class Life1 : TextureRect
 	
 }
 "
+
+[sub_resource type="Animation" id="Animation_or7tv"]
+resource_name = "Flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_133si"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_esopp"]
+_data = {
+&"Flash": SubResource("Animation_or7tv"),
+&"RESET": SubResource("Animation_133si")
+}
 
 [node name="Level" type="Node2D"]
 
@@ -72,11 +108,16 @@ texture = ExtResource("5_xylue")
 layout_mode = 2
 texture = ExtResource("5_xylue")
 
-[node name="DamageFlash" type="ColorRect" parent="UI"]
-visible = false
-offset_right = 1146.0
-offset_bottom = 648.0
-color = Color(1, 0, 0, 0.384314)
+[node name="ColorRect" type="ColorRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 3.0
+offset_right = 1154.0
+offset_bottom = 649.0
+
+[node name="DamageFlash" type="AnimationPlayer" parent="UI/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_esopp")
+}
 
 [node name="StartMenu" type="Control" parent="UI"]
 visible = false
@@ -153,10 +194,10 @@ process_mode = 2
 script = ExtResource("4_tj5wv")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
-offset_left = -3.0
-offset_top = -11.0
-offset_right = 1153.0
-offset_bottom = 636.0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1157.0
+offset_bottom = 645.0
 color = Color(0.470588, 0.470588, 0.470588, 0.388235)
 
 [node name="Paused" type="Label" parent="PauseMenu"]
@@ -184,5 +225,8 @@ position = Vector2(321, 228)
 position = Vector2(330, -159)
 
 [connection signal="EnemyDied" from="Ogre" to="UI" method="AddScore"]
+[connection signal="HealthChanged" from="Ogre" to="Ogre" method="TakeHealth"]
 [connection signal="EnemyDied" from="Ogre2" to="UI" method="AddScore"]
+[connection signal="HealthChanged" from="Ogre2" to="Ogre2" method="TakeHealth"]
 [connection signal="EnemyDied" from="Ogre3" to="UI" method="AddScore"]
+[connection signal="HealthChanged" from="Ogre3" to="Ogre3" method="TakeHealth"]

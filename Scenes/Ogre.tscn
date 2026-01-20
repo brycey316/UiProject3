@@ -154,19 +154,25 @@ debug_color = Color(0.994536, 0, 0.220482, 0.42)
 wait_time = 0.5
 one_shot = true
 
-[node name="Health1" type="Sprite2D" parent="."]
-position = Vector2(-40, -61)
-scale = Vector2(0.5, 0.5)
+[node name="H1" type="TextureRect" parent="."]
+offset_left = -214.0
+offset_top = -179.0
+offset_right = 86.0
+offset_bottom = 64.0
 texture = ExtResource("5_k6vbq")
 
-[node name="Health2" type="Sprite2D" parent="."]
-position = Vector2(-5, -61)
-scale = Vector2(0.5, 0.5)
+[node name="H2" type="TextureRect" parent="."]
+offset_left = -105.0
+offset_top = -179.0
+offset_right = 195.0
+offset_bottom = 64.0
 texture = ExtResource("5_k6vbq")
 
-[node name="Health3" type="Sprite2D" parent="."]
-position = Vector2(30, -61)
-scale = Vector2(0.5, 0.5)
+[node name="H3" type="TextureRect" parent="."]
+offset_left = -159.0
+offset_top = -179.0
+offset_right = 141.0
+offset_bottom = 64.0
 texture = ExtResource("5_k6vbq")
 
 [connection signal="animation_finished" from="Sprite" to="." method="DealDamage"]

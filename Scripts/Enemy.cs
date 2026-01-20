@@ -23,8 +23,7 @@ public partial class Enemy : Creature
 	
 	public override void _Ready()
 	{
-		
-	
+		_animationPlayer = GetNode<AnimationPlayer>("DamageFlash");
 		CurrentHealth = MaxHealth;
 		
 		_player = GetTree().CurrentScene.GetNode<Player>("Player");
@@ -35,6 +34,23 @@ public partial class Enemy : Creature
 		_sprite = GetNode<AnimatedSprite2D>("Sprite");
 		_hurtBox = GetNode<Area2D>("HurtBox");
 		_attackTimer = GetNode<Timer>("AttackTimer");
+	}
+	private AnimationPlayer _animationPlayer;
+	
+	public void DamageFlash()
+	{
+		if (CurrentHealth < 1)
+		{
+			_animationPlayer.Play("Flash");
+		}
+		if (CurrentHealth < 2)
+		{
+			_animationPlayer.Play("Flash");
+		}
+		if (CurrentHealth < 3)
+		{
+			_animationPlayer.Play("Flash");
+		}
 	}
 
 	
@@ -60,6 +76,18 @@ public partial class Enemy : Creature
 	{
 		GD.Print("enemy hit");
 		CurrentHealth -= damage;
+		if (CurrentHealth < 1)
+		{
+			GetNode<TextureRect>("H1").Visible = false;
+		}
+		if (CurrentHealth < 2)
+		{
+			GetNode<TextureRect>("H3").Visible = false;
+		}
+		if (CurrentHealth < 3)
+		{
+			GetNode<TextureRect>("H2").Visible = false;
+		}
 		if (CurrentHealth <= 0)
 		{
 			EmitSignal(SignalName.EnemyDied, Points);
@@ -128,4 +156,5 @@ public partial class Enemy : Creature
 			_sprite.Play("idle");
 		}
 	}
+	
 }
