@@ -10,6 +10,7 @@ public partial class Enemy : Creature
 	
 	[Export]
 	public int Points = 10;
+
 	
 	private bool IsAttacking => _sprite.Animation.ToString() == "attack";
 	private bool HasTarget => _hurtBox.GetOverlappingBodies().Any(x => x is Player);
@@ -22,6 +23,8 @@ public partial class Enemy : Creature
 	
 	public override void _Ready()
 	{
+		
+	
 		CurrentHealth = MaxHealth;
 		
 		_player = GetTree().CurrentScene.GetNode<Player>("Player");
@@ -62,6 +65,7 @@ public partial class Enemy : Creature
 			EmitSignal(SignalName.EnemyDied, Points);
 			QueueFree();
 		}
+		
 	}
 	
 	private void UpdateDirection(Vector2 direction)

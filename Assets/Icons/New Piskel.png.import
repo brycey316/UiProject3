@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctweqnkwhwd4j"
-path="res://.godot/imported/Ogre_walk.png-e7cb2fa5a51241cd2c1b93cb1ae21050.ctex"
+uid="uid://puy1vrfdu3w4"
+path="res://.godot/imported/New Piskel.png-19e2ae440333c3043eb2c2cd7eebaf55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Monsters/Ogre_walk.png"
-dest_files=["res://.godot/imported/Ogre_walk.png-e7cb2fa5a51241cd2c1b93cb1ae21050.ctex"]
+source_file="res://Assets/Icons/New Piskel.png"
+dest_files=["res://.godot/imported/New Piskel.png-19e2ae440333c3043eb2c2cd7eebaf55.ctex"]
 
 [params]
 

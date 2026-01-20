@@ -67,6 +67,18 @@ public partial class Player : Creature
 		if (CurrentHealth <= 0)
 		{
 			Lives -= 1;
+			if (Lives <3)
+			{
+				GetNode<Sprite2D>($"../UI/NewPiskel3").Visible = false;
+			}
+			if (Lives <2)
+			{
+				GetNode<Sprite2D>($"../UI/NewPiskel2").Visible = false;
+			}
+			if (Lives <1)
+			{
+				GetNode<Sprite2D>($"../UI/NewPiskel").Visible = false;
+			}
 			if (Lives <=2)
 			{
 				GetNode<TextureRect>($"../UI/LivesContainer/Life3").Visible = true;

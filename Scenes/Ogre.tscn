@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://v074xqwg3vcg"]
+[gd_scene load_steps=22 format=3 uid="uid://v074xqwg3vcg"]
 
 [ext_resource type="Script" uid="uid://cmn6xybbypwpq" path="res://Scripts/Enemy.cs" id="1_86kj1"]
 [ext_resource type="Texture2D" uid="uid://tndwe5mqtf6w" path="res://Assets/Monsters/Ogre_idle.png" id="2_jxka3"]
 [ext_resource type="Texture2D" uid="uid://dccqbmbpfm85w" path="res://Assets/Monsters/Ogre_attack.png" id="2_tyfgm"]
 [ext_resource type="Texture2D" uid="uid://ctweqnkwhwd4j" path="res://Assets/Monsters/Ogre_walk.png" id="4_qekfd"]
+[ext_resource type="Texture2D" uid="uid://bqcoca8jssu6" path="res://Assets/Icons/pixel-art-heart-8-bit-color-heart-thumbnail.png" id="5_k6vbq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_341m7"]
 atlas = ExtResource("2_tyfgm")
@@ -119,7 +120,7 @@ radius = 36.0
 height = 72.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ooqej"]
-radius = 40.152832
+radius = 40.1528
 
 [node name="Ogre" type="CharacterBody2D"]
 collision_layer = 3
@@ -152,6 +153,21 @@ debug_color = Color(0.994536, 0, 0.220482, 0.42)
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Health1" type="Sprite2D" parent="."]
+position = Vector2(-40, -61)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k6vbq")
+
+[node name="Health2" type="Sprite2D" parent="."]
+position = Vector2(-5, -61)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k6vbq")
+
+[node name="Health3" type="Sprite2D" parent="."]
+position = Vector2(30, -61)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k6vbq")
 
 [connection signal="animation_finished" from="Sprite" to="." method="DealDamage"]
 [connection signal="timeout" from="AttackTimer" to="." method="ResumeAttack"]
