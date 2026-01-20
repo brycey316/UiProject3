@@ -59,7 +59,7 @@ public partial class Player : Creature
 		}
 		if (CurrentHealth < 3)
 		{
-			GetNode<Life1>($"../UI/LivesContainer/Life1").Visible = false;
+			GetNode<TextureRect>($"../UI/LivesContainer/Life1").Visible = false;
 		}
 	
 		
@@ -77,7 +77,7 @@ public partial class Player : Creature
 			}
 			if (Lives <=2)
 			{
-				GetNode<Life1>($"../UI/LivesContainer/Life1").Visible = true;
+				GetNode<TextureRect>($"../UI/LivesContainer/Life1").Visible = true;
 			}
 			EmitSignal(SignalName.LivesChanged, Lives);
 
